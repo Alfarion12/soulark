@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SoulArk AI — AI-наставник для роста продаж и команды</title>
+<title>SoulArk AI — AI-тренер для отдела продаж</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
 
 <template id="__bundler_thumbnail">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -59,7 +59,7 @@
     min-height: 880px;
     background-color: #1a2a3d;
     background-image:
-      linear-gradient(180deg, rgba(11,30,51,0.55) 0%, rgba(11,30,51,0.45) 45%, rgba(11,30,51,0.85) 100%),
+      linear-gradient(180deg, rgba(11,30,51,0.40) 0%, rgba(11,30,51,0.30) 45%, rgba(11,30,51,0.72) 100%),
       url('assets/hero-bg.png');
     background-size: cover;
     background-position: center center;
@@ -72,7 +72,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.35) 100%);
+    background: radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0) 42%, rgba(0,0,0,0.28) 100%);
     pointer-events: none;
   }
 
@@ -147,8 +147,17 @@
     height: 10px;
     border-radius: 50%;
     background: var(--green);
-    box-shadow: 0 0 0 4px rgba(76,217,100,0.18);
+    box-shadow: 0 0 0 0 rgba(76,217,100,0.55);
     flex-shrink: 0;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%   { box-shadow: 0 0 0 0 rgba(76,217,100,0.55); opacity: 1; }
+    50%  { box-shadow: 0 0 0 7px rgba(76,217,100,0); opacity: 0.65; }
+    100% { box-shadow: 0 0 0 0 rgba(76,217,100,0); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .phone .dot { animation: none; box-shadow: 0 0 0 4px rgba(76,217,100,0.18); }
   }
 
   /* ---------- HERO CONTENT ---------- */
@@ -170,6 +179,23 @@
     color: #fff;
     text-shadow: 0 2px 24px rgba(0,0,0,0.35);
   }
+  .hero-title .accent { color: var(--orange); }
+  .hero-eyebrow {
+    display: inline-block;
+    margin: 0 0 22px;
+    padding: 9px 20px;
+    border: 1.5px solid rgba(250,229,190,0.5);
+    border-radius: 999px;
+    color: #FAE5BE;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
 
   .hero-subtitle {
     font-size: 22px;
@@ -187,9 +213,10 @@
 
   .hero-meta {
     margin: 40px 0 0;
-    font-style: italic;
     font-size: 18px;
-    color: rgba(255,255,255,0.92);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: #FAE5BE;
     text-shadow: 0 1px 12px rgba(0,0,0,0.4);
   }
 
@@ -222,6 +249,11 @@
       0 6px 18px rgba(0,0,0,0.3);
   }
   .hero-cta:active { transform: translateY(0); }
+
+  /* button font variants */
+  .hero-cta.f-brand { font-family: 'Gilroy','Open Sans',sans-serif; font-weight: 800; text-transform: none; letter-spacing: 0.005em; }
+  .hero-cta.f-soft  { font-family: 'Nunito','Open Sans',sans-serif; font-weight: 800; text-transform: none; letter-spacing: 0.005em; }
+  .hero-cta.f-clean { font-family: 'Open Sans',sans-serif; font-weight: 700; text-transform: none; letter-spacing: 0.01em; }
 
   /* ========== WHY SECTION ========== */
   .why {
@@ -272,8 +304,16 @@
     text-wrap: pretty;
   }
 
-  /* ---- dashboard mockup ---- */
+  /* ---- dashboard photo ---- */
   .dash-wrap { width: 100%; }
+  .dash-photo {
+    display: block; width: 100%; height: auto;
+    border-radius: 14px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ---- dashboard mockup (legacy, unused) ---- */
   .dash {
     background: #f4f6f9;
     border-radius: 12px;
@@ -403,7 +443,7 @@
 
   .why-tag {
     text-align: center; font-style: italic; font-weight: 700;
-    font-size: 22px; color: #fff; margin: 72px 0 0; text-wrap: pretty;
+    font-size: 22px; color: #FAE5BE; margin: 72px 0 0; text-wrap: pretty;
   }
 
   @media (max-width: 1100px) {
@@ -438,6 +478,572 @@
   @keyframes bob {
     0%, 100% { transform: translate(-50%, 0); }
     50%      { transform: translate(-50%, 8px); }
+  }
+
+  /* ========== CONCEPT BLOCKS ========== */
+
+  /* metric band */
+  .metrics {
+    background: #16293c;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 54px 0;
+  }
+  .metrics-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 64px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  }
+  .metric { text-align: center; position: relative; }
+  .metric + .metric::before {
+    content: ""; position: absolute; left: -16px; top: 12%; height: 76%;
+    width: 1px; background: rgba(255,255,255,0.1);
+  }
+  .metric .num {
+    font-family: 'Gilroy','Open Sans',sans-serif; font-weight: 800;
+    font-size: 46px; line-height: 1; color: var(--orange); letter-spacing: -0.01em;
+  }
+  .metric .lbl { margin-top: 10px; color: #aebfd2; font-size: 15px; line-height: 1.4; }
+
+  /* section scaffolding */
+  .sec { padding: 100px 0; }
+  .sec-inner { max-width: var(--container); margin: 0 auto; padding: 0 64px; }
+  .eyebrow {
+    text-align: center; color: var(--orange); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.14em; font-size: 13px; margin: 0 0 14px;
+  }
+  .sec-title {
+    font-family: 'Gilroy','Open Sans',sans-serif; font-weight: 800; text-transform: uppercase;
+    text-align: center; font-size: 40px; line-height: 1.14; margin: 0 auto 56px;
+    max-width: 880px; color: #fff;
+  }
+
+  /* testimonials */
+  .tst { background: #1b2f45; }
+  .tst-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .tcard {
+    background: #15273a; border: 1px solid rgba(255,255,255,0.07); border-radius: 16px;
+    padding: 32px 30px; display: flex; flex-direction: column; gap: 22px;
+  }
+  .tquote { color: #e7eef6; font-size: 17px; line-height: 1.62; margin: 0; text-wrap: pretty; }
+  .tquote .hi { color: var(--orange); font-weight: 600; }
+  .twho { display: flex; align-items: center; gap: 14px; margin-top: auto; }
+  .tava {
+    width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center;
+    font-weight: 700; font-size: 17px; color: #fff;
+  }
+  .tava.a { background: linear-gradient(135deg,#FF8C42,#e0632f); }
+  .tava.b { background: linear-gradient(135deg,#6c5ce7,#4b3bc4); }
+  .tava.c { background: linear-gradient(135deg,#2aa775,#1f7f59); }
+  .tava-slot { width: 48px; height: 48px; flex-shrink: 0; }
+  .tname { font-weight: 700; color: #fff; font-size: 15px; }
+  .trole { color: #93a5b8; font-size: 13px; margin-top: 2px; }
+  .tstars { color: #FF8C42; letter-spacing: 2px; font-size: 14px; }
+
+  /* security — LIGHT section to break rhythm */
+  .sec-light { background: #F7F6F3; }
+  .sec-light .sec-title { color: #16293c; }
+  .sec-light .eyebrow { color: #c06a2e; }
+  .sec-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  .sec-lead { color: #51606e; font-size: 18px; line-height: 1.6; margin: 0 0 30px; max-width: 520px; }
+  .sec-lead b { color: #16293c; }
+  .seclist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .seclist li { display: grid; grid-template-columns: 30px 1fr; gap: 16px; align-items: start; }
+  .seclist .ico {
+    width: 30px; height: 30px; border-radius: 8px; background: #16293c; color: #fff;
+    display: grid; place-items: center; font-size: 15px;
+  }
+  .seclist .st { font-weight: 700; color: #16293c; font-size: 16px; }
+  .seclist .sd { color: #5a6776; font-size: 14.5px; line-height: 1.5; margin-top: 3px; }
+  .sec-badges {
+    background: #fff; border: 1px solid #e6ded0; border-radius: 18px; padding: 36px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+  }
+  .badge {
+    border: 1px solid #ece6da; border-radius: 12px; padding: 22px 20px; text-align: center;
+  }
+  .badge .bnum { font-family:'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 30px; color: #c06a2e; }
+  .badge .bl { color: #5a6776; font-size: 13.5px; margin-top: 6px; line-height: 1.4; }
+
+  /* faq */
+  .faq { background: #16293c; }
+  .faq-list { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .qa {
+    background: #1b2f45; border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; overflow: hidden;
+  }
+  .qa summary {
+    list-style: none; cursor: pointer; padding: 24px 28px; display: flex; align-items: center;
+    justify-content: space-between; gap: 20px; font-weight: 600; font-size: 18px; color: #fff;
+  }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa .plus {
+    width: 26px; height: 26px; flex-shrink: 0; position: relative; transition: transform .25s ease;
+  }
+  .qa .plus::before, .qa .plus::after {
+    content: ""; position: absolute; background: var(--orange); border-radius: 2px;
+  }
+  .qa .plus::before { left: 50%; top: 4px; width: 2.5px; height: 18px; transform: translateX(-50%); }
+  .qa .plus::after { top: 50%; left: 4px; height: 2.5px; width: 18px; transform: translateY(-50%); }
+  .qa[open] .plus { transform: rotate(45deg); }
+  .qa .ans { padding: 0 28px 26px; color: #aebfd2; font-size: 16px; line-height: 1.65; margin: 0; max-width: 720px; text-wrap: pretty; }
+
+  .concept-flag {
+    display: inline-flex; align-items: center; gap: 8px; margin: 0 auto 40px; padding: 7px 16px;
+    background: rgba(255,140,66,0.12); border: 1px dashed rgba(255,140,66,0.5); border-radius: 999px;
+    color: var(--orange); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+  }
+  .concept-wrap { display: flex; justify-content: center; }
+
+  /* ===== shared light-section text defaults ===== */
+  .sec-light .sec-lead, .sec-light p.muted { color: #51606e; }
+
+  /* ===== PLATFORM ===== */
+  .platform { background: #16293c; }
+  .sec-sub {
+    text-align: center; color: #aebfd2; font-size: 19px; line-height: 1.55;
+    max-width: 720px; margin: -36px auto 48px; text-wrap: pretty;
+  }
+  .sec-light .sec-sub { color: #51606e; }
+  .platform-shot {
+    max-width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ===== PLATFORM CAROUSEL ===== */
+  .carousel { position: relative; max-width: 1280px; margin: 0 auto; }
+  .car-viewport {
+    overflow: hidden; border-radius: 16px;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08);
+    background: #0e2034;
+  }
+  .car-track { display: flex; transition: transform .5s cubic-bezier(.4,0,.2,1); }
+  .car-slide { min-width: 100%; }
+  .car-slide image-slot {
+    display: block; width: 100%; height: 640px; background: #0e2034;
+  }
+  @media (max-width: 1100px) { .car-slide image-slot { height: 460px; } }
+  @media (max-width: 700px)  { .car-slide image-slot { height: 300px; } }
+  .car-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+    width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(255,255,255,0.92); color: #16293c;
+    display: grid; place-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35); transition: background .2s ease, transform .2s ease;
+  }
+  .car-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.06); }
+  .car-arrow.prev { left: -14px; }
+  .car-arrow.next { right: -14px; }
+  .car-arrow svg { width: 26px; height: 26px; }
+  .car-arrow:disabled { opacity: 0; pointer-events: none; }
+  .car-dots { display: flex; justify-content: center; gap: 10px; margin: 26px 0 0; }
+  .car-dot {
+    width: 10px; height: 10px; border-radius: 50%; border: none; cursor: pointer; padding: 0;
+    background: rgba(255,255,255,0.25); transition: background .2s ease, width .2s ease;
+  }
+  .car-dot.active { background: var(--orange); width: 30px; border-radius: 6px; }
+  .car-cap {
+    text-align: center; color: #aebfd2; font-size: 16px; margin: 18px auto 0; max-width: 700px;
+    min-height: 24px; transition: opacity .3s ease;
+  }
+  .car-cap b { color: #fff; font-weight: 700; }
+  @media (max-width: 920px) {
+    .car-arrow { width: 44px; height: 44px; }
+    .car-arrow.prev { left: 6px; }
+    .car-arrow.next { right: 6px; }
+  }
+
+  .platform-feats {
+    max-width: 1100px; margin: 36px auto 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+  }
+  .pfeat { text-align: center; color: #aebfd2; font-size: 15px; line-height: 1.5; }
+  .pfeat b { color: #fff; display: block; margin-bottom: 4px; font-size: 16px; }
+
+  /* ===== STEPS ===== */
+  .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; max-width: 1100px; margin: 0 auto; }
+  .step { display: flex; flex-direction: column; gap: 14px; }
+  .step-n {
+    font-family:'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 30px;
+    width: 62px; height: 62px; border-radius: 16px; display: grid; place-items: center;
+    border: 2px solid #c06a2e; color: #c06a2e;
+  }
+  .step-t { font-weight: 700; font-size: 21px; color: #16293c; }
+  .step-d { color: #5a6776; font-size: 16px; line-height: 1.55; margin: 0; text-wrap: pretty; }
+  .steps-tag { text-align: center; font-style: italic; font-weight: 700; font-size: 19px; color: #c06a2e; margin: 52px 0 0; }
+
+  /* ===== WHAT IS IT (definition lead) ===== */
+  .define {
+    max-width: 880px; margin: 0 auto 58px; text-align: center;
+    font-size: 24px; line-height: 1.55; color: #3a4856; text-wrap: pretty;
+  }
+  .define b { color: #16293c; font-weight: 700; }
+  .define .hl { color: #c06a2e; font-weight: 700; }
+
+  /* ===== QUALIFY (Для кого) ===== */
+  .qualify { background: #16293c; padding: 76px 0; }
+  .qualify-grid {
+    max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+  }
+  .qcard {
+    background: #1b2f45; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;
+    padding: 30px 28px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .qcard .qico {
+    width: 50px; height: 50px; border-radius: 13px; display: grid; place-items: center;
+    background: rgba(255,140,66,0.12); color: var(--orange); flex-shrink: 0;
+  }
+  .qcard .qico svg { width: 26px; height: 26px; }
+  .qcard p { margin: 0; color: #cdd9e6; font-size: 17px; line-height: 1.5; }
+  .qcard p b { color: #fff; font-weight: 700; }
+  .qualify-foot {
+    text-align: center; margin: 40px auto 0; font-size: 18px; color: #FAE5BE; font-weight: 600;
+  }
+  @media (max-width: 900px) {
+    .qualify-grid { grid-template-columns: 1fr; }
+    .define { font-size: 20px; }
+  }
+
+  /* ===== BENEFITS ===== */
+  .ben-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; max-width: 1100px; margin: 0 auto; }
+  .ben { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .ben image-slot { width: 132px; height: 132px; }
+  .ben-t { font-family:'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 24px; color: #f3d9b8; line-height: 1.2; }
+  .ben-d { color: #aebfd2; font-size: 16px; line-height: 1.6; margin: 0; max-width: 320px; text-wrap: pretty; }
+  .ben-d b { color: #fff; }
+
+  /* ===== CASE ===== */
+  .case-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto 56px; }
+  .case-row:last-of-type { margin-bottom: 0; }
+  .case-row.flip .case-text { order: 2; }
+  .case-row image-slot { width: 100%; aspect-ratio: 4 / 3; }
+  .case-step { color: #c06a2e; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 0 0 16px; letter-spacing: 0.01em; }
+  .sec:not(.sec-light) .case-step { color: var(--orange); }
+  .case-text p { color: #5a6776; font-size: 15.5px; line-height: 1.6; margin: 0 0 10px; }
+  .sec:not(.sec-light) .case-text p { color: #aebfd2; }
+  .case-text b { color: #16293c; }
+  .sec:not(.sec-light) .case-text b { color: #fff; }
+  .case-text em { color: #44525f; }
+  .sec:not(.sec-light) .case-text em { color: #cdd9e6; }
+  .case-itog {
+    text-align: center; font-weight: 800; font-size: 22px; color: #c06a2e;
+    max-width: 880px; margin: 64px auto 0; line-height: 1.4; text-wrap: pretty;
+  }
+
+  /* ===== CASE v2 (Было → Стало) ===== */
+  .case2 {
+    display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0; align-items: stretch;
+    max-width: 1040px; margin: 0 auto;
+  }
+  .case2-col {
+    background: #fff; border: 1px solid #e6ded0; border-radius: 18px; padding: 30px 30px 26px;
+    display: flex; flex-direction: column;
+  }
+  .case2-col.now { border-color: var(--orange); box-shadow: 0 20px 50px rgba(255,140,66,0.15); }
+  .case2-tag {
+    align-self: flex-start; font-weight: 800; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 7px 16px; border-radius: 999px; margin-bottom: 18px; white-space: nowrap;
+    background: #eef1f5; color: #8895a5;
+  }
+  .case2-tag.now { background: var(--orange); color: #fff; }
+  .case2-lead { font-size: 17px; font-weight: 700; color: #16293c; line-height: 1.45; margin: 0 0 18px; text-wrap: pretty; }
+  .case2-dlg { display: flex; flex-direction: column; gap: 9px; padding: 16px 18px; background: #f7f4ee; border-radius: 12px; margin-bottom: 16px; }
+  .case2-col.now .case2-dlg { background: #fff7f0; }
+  .case2-dlg p { margin: 0; font-size: 14.5px; line-height: 1.45; color: #5a6776; font-style: italic; }
+  .case2-dlg b { color: #16293c; font-style: normal; font-weight: 700; }
+  .case2-note { margin: auto 0 0; font-size: 15px; color: #6a7787; }
+  .case2-note b { color: #c06a2e; font-weight: 700; }
+  .case2-arrow { display: grid; place-items: center; color: var(--orange); }
+  .case2-arrow svg { width: 30px; height: 30px; }
+  .case2-result {
+    display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap;
+    max-width: 760px; margin: 44px auto 0; text-align: left;
+    background: #16293c; border-radius: 18px; padding: 30px 40px;
+  }
+  .case2-big { font-family: 'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 64px; color: var(--orange); line-height: 1; }
+  .case2-big-lbl { color: #d9e3ee; font-size: 18px; line-height: 1.45; max-width: 420px; text-wrap: pretty; }
+  @media (max-width: 860px) {
+    .case2 { grid-template-columns: 1fr; gap: 16px; }
+    .case2-arrow { transform: rotate(90deg); height: 40px; }
+    .case2-result { flex-direction: column; text-align: center; gap: 12px; padding: 28px 24px; }
+  }
+
+  /* ===== FOUNDERS ===== */
+  .fnd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1040px; margin: 0 auto; }
+  .fnd { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: start; }
+  .fnd image-slot { width: 200px; height: 250px; }
+  .fnd-name { color: var(--orange); font-weight: 800; font-size: 22px; }
+  .fnd-role { color: #fff; font-weight: 700; font-size: 14px; margin: 6px 0 18px; }
+  .fnd ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 10px; }
+  .fnd li { color: #aebfd2; font-size: 15px; line-height: 1.5; }
+  .fnd li b { color: #fff; }
+  .fnd-values { text-align: center; font-style: italic; font-weight: 700; color: #d9e3ee; font-size: 18px; line-height: 1.6; margin: 56px auto 0; max-width: 820px; }
+  .logos { display: flex; flex-wrap: nowrap; justify-content: center; align-items: center; gap: 12px; margin: 40px auto 0; max-width: 1120px; }
+  .logo-chip {
+    flex: 1 1 0; min-width: 0; height: 64px; padding: 0 16px; border-radius: 12px;
+    background: #fff; display: grid; place-items: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  .logo-chip img { display: block; max-height: 30px; max-width: 100%; width: auto; height: auto; }
+  @media (max-width: 760px) {
+    .logos { flex-wrap: wrap; }
+    .logo-chip { flex: 0 0 auto; padding: 0 22px; }
+  }
+
+  /* ===== PRICING ===== */
+  .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 26px; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .plan {
+    background: #fff; border: 1px solid #e6ded0; border-radius: 18px; padding: 34px 30px;
+    display: flex; flex-direction: column; gap: 4px; position: relative;
+  }
+  .plan.pop { border: 2px solid var(--orange); box-shadow: 0 24px 60px rgba(255,140,66,0.18); }
+  .plan-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--orange); color: #fff; font-weight: 700; font-size: 12px; letter-spacing: 0.04em;
+    padding: 6px 18px; border-radius: 999px; white-space: nowrap; text-transform: uppercase;
+  }
+  .plan-name { font-family:'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 22px; color: #16293c; }
+  .plan-tag { color: #6a7787; font-size: 14px; margin: 6px 0 22px; min-height: 20px; }
+  .plan-price { font-family:'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 40px; color: var(--orange); line-height: 1; }
+  .plan-per { color: #8a98a8; font-size: 13px; margin: 8px 0 22px; }
+  .plan ul { list-style: none; margin: 0 0 26px; padding: 22px 0 0; border-top: 1px solid #efe9dd; display: flex; flex-direction: column; gap: 13px; }
+  .plan li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; color: #3f4d5a; font-size: 14.5px; line-height: 1.4; align-items: start; }
+  .plan li .ck { color: var(--orange); font-weight: 800; }
+  .plan li .soon { color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; margin-left: 6px; }
+  .plan-cta {
+    margin-top: auto; display: block; width: 100%; box-sizing: border-box;
+    text-align: center; padding: 16px; border-radius: 12px;
+    font-weight: 700; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+    border: 2px solid var(--orange); color: var(--orange); background: #fff; transition: all .2s ease;
+    font-family: inherit;
+  }
+  .plan-cta:hover { background: rgba(255,140,66,0.08); }
+  .plan.pop .plan-cta { background: var(--orange); color: #fff; }
+  .plan.pop .plan-cta:hover { background: var(--orange-soft); }
+  .price-note { text-align: center; color: #6a7787; font-size: 15px; margin: 44px 0 0; }
+  .price-note a { color: #c06a2e; font-weight: 700; }
+
+  /* ===== TRUST STRIP (clients after hero) ===== */
+  .trust { background: #F7F6F3; padding: 56px 0; }
+  .trust-lead {
+    text-align: center; color: #51606e; font-size: 18px; margin: 0 0 32px; line-height: 1.5;
+  }
+  .trust-lead b { color: #16293c; font-weight: 800; }
+
+  /* ===== FORM HOST (avatar) ===== */
+  .form-host {
+    display: flex; align-items: center; gap: 14px; margin: 0 0 22px;
+    padding: 14px 16px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 14px;
+  }
+  .form-host image-slot { width: 56px; height: 56px; flex-shrink: 0; }
+  .host-name { color: #fff; font-weight: 700; font-size: 16px; line-height: 1.2; }
+  .host-role { color: var(--orange); font-size: 13.5px; line-height: 1.2; margin-top: 4px; }
+
+  /* ===== FORM CTA ===== */
+  .cta-form {
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(11,30,51,0.45), rgba(11,30,51,0.62)), url('assets/hero-bg.png');
+    background-size: cover; background-position: center;
+  }
+  .form-card {
+    max-width: 640px; margin: 0 auto;
+    background: rgba(10,22,38,0.55);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px; padding: 48px 52px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+  }
+  .form-eyebrow {
+    display: inline-flex; align-items: center; gap: 9px; margin: 0 0 18px;
+    padding: 8px 18px; border-radius: 999px; white-space: nowrap;
+    background: rgba(255,140,66,0.16); border: 1px solid rgba(255,140,66,0.4);
+    color: #FAE5BE; font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .form-card .sec-title { text-align: left; margin: 0 0 14px; }
+  .form-card .sec-sub { text-align: left; margin: 0 0 24px; max-width: none; }
+  .form-gets {
+    list-style: none; margin: 0 0 26px; padding: 0; display: flex; flex-direction: column; gap: 11px;
+  }
+  .form-gets li { display: grid; grid-template-columns: 22px 1fr; gap: 11px; align-items: start; color: #d9e3ee; font-size: 15.5px; line-height: 1.45; }
+  .form-gets .ck { color: var(--orange); font-weight: 800; }
+  .form-gets b { color: #fff; }
+  .lead-form { display: flex; flex-direction: column; gap: 14px; margin-top: 0; }
+  .lead-form input {
+    width: 100%; padding: 19px 22px; border-radius: 12px; border: none; font-size: 16px;
+    font-family: inherit; background: #fff; color: #16293c;
+  }
+  .lead-form input::placeholder { color: #9aa7b6; }
+  .lead-form .submit {
+    background: var(--orange); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: 0.04em;
+    text-transform: none; cursor: pointer; padding: 20px; border-radius: 12px; border: none;
+    font-family: 'Nunito','Open Sans',sans-serif;
+    box-shadow: 0 14px 34px rgba(255,140,66,0.4); transition: all .2s ease;
+  }
+  .lead-form .submit:hover { background: var(--orange-soft); transform: translateY(-2px); box-shadow: 0 20px 44px rgba(255,140,66,0.5); }
+  .form-reassure { text-align: center; color: #cdd9e6; font-size: 14px; margin: 16px 0 0; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .form-reassure .sep { color: rgba(255,255,255,0.3); }
+  .form-reassure b { color: var(--green); }
+  .form-consent { color: #93a5b8; font-size: 13px; text-align: center; margin: 16px 0 0; line-height: 1.5; }
+  .form-consent a { color: #aebfd2; text-decoration: underline; }
+  @media (max-width: 600px) { .form-card { padding: 36px 24px; } }
+  .form-ok { text-align: center; color: var(--green); font-weight: 600; margin: 16px 0 0; min-height: 20px; }
+
+  /* ===== FOOTER ===== */
+  .foot { background: #0e2034; padding: 40px 0; }
+  .foot-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 64px;
+    display: flex; align-items: center; justify-content: space-between; gap: 30px; flex-wrap: wrap;
+  }
+  .foot-brand img { height: 50px; display: block; }
+  .foot-right { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+  .foot-nav { display: flex; gap: 30px; flex-wrap: wrap; }
+  .foot-nav a { color: #fff; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .foot-nav a:hover { color: var(--orange); }
+  .foot-contacts { color: var(--orange); font-weight: 600; font-size: 15px; }
+  .foot-contacts span { color: #aebfd2; font-weight: 400; }
+
+  @media (max-width: 1100px) {
+    .platform-feats, .steps-grid, .ben-grid, .price-grid { grid-template-columns: 1fr; gap: 28px; }
+    .fnd-grid { grid-template-columns: 1fr; }
+    .case-row { grid-template-columns: 1fr; gap: 24px; }
+    .case-row.flip .case-text { order: 0; }
+    .foot-inner { flex-direction: column; text-align: center; }
+    .foot-right { align-items: center; }
+  }
+  @media (max-width: 700px) {
+    .fnd { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .fnd ul { text-align: left; }
+  }
+
+  @media (max-width: 1100px) {
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+    .metric + .metric::before { display: none; }
+    .tst-grid { grid-template-columns: 1fr; }
+    .sec-grid { grid-template-columns: 1fr; gap: 36px; }
+    .sec-title { font-size: 30px; }
+  }
+  @media (max-width: 700px) {
+    .sec { padding: 64px 0; }
+    .metrics-inner, .sec-inner { padding: 0 24px; }
+    .sec-badges { grid-template-columns: 1fr; padding: 24px; }
+    .qa summary { font-size: 16px; padding: 20px; }
+  }
+
+  /* ---------- MODAL / POPUP ---------- */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(7, 18, 31, 0.7);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+    opacity: 0; visibility: hidden; transition: opacity .28s ease, visibility .28s ease;
+  }
+  .modal-overlay.open { opacity: 1; visibility: visible; }
+
+  .modal {
+    background: #fff; border-radius: 26px; width: 100%; max-width: 540px;
+    padding: 38px 44px 30px; position: relative; color: #16293c;
+    box-shadow: 0 40px 110px rgba(0,0,0,0.5);
+    transform: translateY(18px) scale(0.98); opacity: 0;
+    transition: transform .32s cubic-bezier(.2,.8,.2,1), opacity .32s ease;
+    max-height: calc(100vh - 48px); overflow-y: auto;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .modal::-webkit-scrollbar { width: 0; height: 0; display: none; }
+  .modal-overlay.open .modal { transform: translateY(0) scale(1); opacity: 1; }
+
+  .modal-close {
+    position: absolute; top: 18px; right: 18px; width: 40px; height: 40px;
+    border: none; border-radius: 50%; background: #f1f3f7; color: #6a7787;
+    font-size: 20px; cursor: pointer; display: grid; place-items: center;
+    transition: background .2s ease, color .2s ease;
+  }
+  .modal-close:hover { background: #e7ebf1; color: #16293c; }
+
+  .modal-badge {
+    display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px;
+    background: var(--color-accent-bg, rgba(255,140,66,0.1)); color: var(--orange);
+    font-weight: 700; font-size: 13px; letter-spacing: 0.02em;
+    padding: 7px 15px; border-radius: 999px; white-space: nowrap;
+  }
+  .modal-badge .pulse {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--orange);
+    box-shadow: 0 0 0 0 rgba(255,140,66,0.5); animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  .modal-title {
+    font-family: 'Gilroy','Open Sans',sans-serif; font-weight: 800;
+    font-size: 29px; line-height: 1.14; margin: 0 0 12px; color: #16293c;
+  }
+  .modal-sub { color: #5a6776; font-size: 16px; line-height: 1.5; margin: 0 0 20px; text-wrap: pretty; }
+  .modal-sub b { color: #16293c; }
+
+  .modal-gets {
+    list-style: none; margin: 0 0 22px; padding: 18px 20px;
+    background: #faf6ee; border: 1px solid #efe6d4; border-radius: 16px;
+    display: flex; flex-direction: column; gap: 11px;
+  }
+  .modal-gets li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start; font-size: 15px; line-height: 1.4; color: #3f4d5a; }
+  .modal-gets .ck {
+    width: 22px; height: 22px; border-radius: 50%; background: var(--orange); color: #fff;
+    display: grid; place-items: center; font-size: 12px; font-weight: 800; margin-top: 1px;
+  }
+  .modal-gets b { color: #16293c; }
+
+  .modal-form { display: flex; flex-direction: column; gap: 14px; }
+  .phone-field {
+    display: flex; align-items: center; gap: 10px; background: #f4f6f9;
+    border: 2px solid #e7ebf1; border-radius: 14px; padding: 4px 18px;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .phone-field:focus-within { border-color: var(--orange); background: #fff; }
+  .phone-field.invalid { border-color: #e0574b; background: #fdf3f2; }
+  .phone-flag { width: 26px; height: 18px; border-radius: 3px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(0,0,0,0.06); display: block; }
+  .phone-flag svg { display: block; width: 100%; height: 100%; }
+  .phone-field input {
+    flex: 1; border: none; background: transparent; outline: none;
+    font-family: inherit; font-size: 19px; font-weight: 600; color: #16293c;
+    padding: 16px 0; letter-spacing: 0.01em;
+  }
+  .phone-field input::placeholder { color: #9aa7b6; font-weight: 500; }
+
+  .modal-submit {
+    background: var(--orange); color: #fff; border: none; border-radius: 14px;
+    padding: 18px; font-family: 'Open Sans',sans-serif; font-weight: 700; font-size: 16.5px;
+    letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer;
+    box-shadow: 0 14px 34px rgba(255,140,66,0.4); transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .modal-submit:hover { background: var(--orange-soft); transform: translateY(-2px); box-shadow: 0 20px 44px rgba(255,140,66,0.5); }
+  .modal-submit:active { transform: translateY(0); }
+
+  .modal-reassure { text-align: center; color: #6a7787; font-size: 13.5px; margin: 14px 0 0; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .modal-reassure .sep { color: #c2ccd8; }
+  .modal-reassure b { color: #2aa775; font-weight: 700; }
+
+  .modal-consent { text-align: center; color: #9aa7b6; font-size: 12px; line-height: 1.5; margin: 14px 0 0; }
+  .modal-consent a { color: #8895a5; text-decoration: underline; }
+
+  .modal-success { text-align: center; padding: 10px 0 4px; display: none; }
+  .modal.is-success {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; min-height: 320px;
+  }
+  .modal.is-success .modal-form,
+  .modal.is-success .modal-gets,
+  .modal.is-success .modal-sub,
+  .modal.is-success .modal-badge,
+  .modal.is-success .modal-title,
+  .modal.is-success .modal-consent,
+  .modal.is-success .modal-reassure { display: none; }
+  .modal.is-success .modal-success { display: block; }
+  .success-check {
+    width: 72px; height: 72px; border-radius: 50%; background: rgba(42,167,117,0.12);
+    color: #2aa775; display: grid; place-items: center; font-size: 36px; margin: 6px auto 18px;
+  }
+  .modal-success h3 { font-family: 'Gilroy','Open Sans',sans-serif; font-weight: 800; font-size: 26px; color: #16293c; margin: 0 0 12px; }
+  .modal-success p { color: #5a6776; font-size: 16px; line-height: 1.55; margin: 0; }
+
+  @media (max-width: 560px) {
+    .modal { padding: 34px 22px 26px; border-radius: 22px; }
+    .modal-title { font-size: 24px; }
+    .modal-gets { padding: 15px 17px; }
   }
 
   /* ---------- RESPONSIVE ---------- */
@@ -476,13 +1082,13 @@
   <div class="hero-inner">
     <header class="header">
       <a class="brand" href="#top" aria-label="SoulArk AI">
-        <img src="assets/logo-with-tagline.png" alt="SoulArk AI — Развивайте навыки. Растёт бизнес." />
+        <img src="assets/logo.png" alt="SoulArk AI" />
       </a>
       <nav class="nav" aria-label="Главное меню">
-        <a href="#how">Как работает</a>
+        <a href="#how-works">Как работает</a>
         <a href="#results">Результаты</a>
-        <a href="#demo">ДЕМО</a>
-        <a class="nav-cta" href="https://t.me/" target="_blank" rel="noopener">Чат в Телеграм 24/7</a>
+        <a href="https://demo.soulark.ru/" target="_blank" rel="noopener">ДЕМО</a>
+        <a class="nav-cta" href="https://t.me/SoulArkAI" target="_blank" rel="noopener">Чат в Телеграм</a>
       </nav>
       <a class="phone" href="tel:+74955131356">
         <span class="dot" aria-hidden="true"></span>
@@ -491,18 +1097,19 @@
     </header>
 
     <div class="hero-content">
-      <h1 class="hero-title" id="hero-title">AI-наставник для роста продаж и команды</h1>
+      <p class="hero-eyebrow">AI-тренер для отдела продаж</p>
+      <h1 class="hero-title" id="hero-title">Увеличьте прибыль <span class="accent">на 18%</span> с AI-тренером</h1>
 
       <p class="hero-subtitle" id="hero-subtitle">
-        Ваши менеджеры сливают сделки на звонках. Поднимем конверсию
-        <span class="accent">+15–25% за 4 недели</span> — на тех же лидах
+        Слушает 100% звонков, показывает где сливаются сделки — и тренирует менеджеров их закрывать. Конверсия растёт
+        <span class="accent">+15–25%</span> без найма и рекламы
       </p>
 
       <p class="hero-meta" id="hero-meta">
-        Демо бесплатно · Триал 7 дней · Окупаемость с первой сделки
+        Окупаемость с первой сделки · Попробуйте тест-драйв
       </p>
 
-      <button class="hero-cta" id="hero-cta" type="button" onclick="document.getElementById('how')?.scrollIntoView({behavior:'smooth'})">
+      <button class="hero-cta f-brand" id="hero-cta" type="button">
         Получить разбор звонка
       </button>
     </div>
@@ -513,6 +1120,21 @@
       <polyline points="6 9 12 16 18 9"></polyline>
     </svg>
   </a>
+</section>
+
+<!-- ========== TRUST STRIP (логотипы клиентов) ========== -->
+<section class="trust" data-screen-label="Нам доверяют">
+  <div class="sec-inner">
+    <p class="trust-lead">За плечами команды — <b>100+ закрытых B2B-сделок</b> в автоматизации</p>
+    <div class="logos">
+      <div class="logo-chip"><img src="assets/logos/alexrovich.png" alt="Alexrovich" /></div>
+      <div class="logo-chip"><img src="assets/logos/pfk.png" alt="1 ПФК" /></div>
+      <div class="logo-chip"><img src="assets/logos/pek.png" alt="ПЭК" /></div>
+      <div class="logo-chip"><img src="assets/logos/lifepay.png" alt="Life Pay" /></div>
+      <div class="logo-chip"><img src="assets/logos/melitek.png" alt="Мелитэк" /></div>
+      <div class="logo-chip"><img src="assets/logos/trasko.png" alt="Trasko" /></div>
+    </div>
+  </div>
 </section>
 
 <!-- ========== WHY (ПОЧЕМУ ПЛАН НЕ ВЫПОЛНЯЕТСЯ) ========== -->
@@ -568,13 +1190,9 @@
         </article>
       </div>
 
-      <!-- right: dashboard screenshot -->
+      <!-- right: dashboard photo -->
       <div class="dash-wrap">
-        <img
-          src="SoulArk Screen01-2.png"
-          alt="Дашборд SoulArk AI: навыки команды, тренд и зоны роста"
-          style="width:100%;border-radius:12px;box-shadow:0 30px 70px rgba(0,0,0,0.4);display:block;"
-        />
+        <img class="dash-photo" src="assets/dashboard.png" alt="Дашборд SoulArk AI: навыки команды, тренд и зоны роста" />
       </div>
     </div>
 
@@ -582,10 +1200,567 @@
   </div>
 </section>
 
-<!-- placeholder anchors so smooth-scroll links don't 404 -->
-<div id="results" style="height:1px"></div>
-<div id="demo" style="height:1px"></div>
+<!-- ========== HOW IT WORKS (beige) ========== -->
+<section class="sec sec-light" id="how-works" data-screen-label="Как работает">
+  <div class="sec-inner">
+    <p class="eyebrow">Что такое SoulArk</p>
+    <h2 class="sec-title">Как AI-тренер превращает звонки в прибыль</h2>
+    <p class="define">
+      SoulArk — это <b>AI-тренер для отдела продаж</b>. Он слушает звонки ваших менеджеров и подсказывает каждому, что улучшить — <span class="hl">как живой наставник</span>, только для всей команды и каждый день.
+    </p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-t">Подключаем за 1 день</div>
+        <p class="step-d">Подключаем к CRM или телефонии — без работы с вашей стороны. Дальше AI-тренер работает сам.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-t">Видите, где теряются деньги</div>
+        <p class="step-d">AI показывает слабое место каждого менеджера: где ушёл клиент и что сказать в следующий раз.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-t">Менеджеры закрывают больше</div>
+        <p class="step-d">Каждый знает свой один шаг к росту и отрабатывает его — навыки растут, прибыль за ними.</p>
+      </div>
+    </div>
+    <p class="steps-tag">А вот как это выглядит…</p>
+  </div>
+</section>
 
+<!-- ========== QUALIFY (Для кого) ========== -->
+<section class="qualify" data-screen-label="Кому подойдёт">
+  <div class="sec-inner">
+    <p class="eyebrow">Кому подойдёт</p>
+    <h2 class="sec-title">Вам подойдёт, если…</h2>
+    <div class="qualify-grid">
+      <div class="qcard">
+        <div class="qico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+        <p>У вас <b>отдел продаж от 3 менеджеров</b> и важен каждый из них</p>
+      </div>
+      <div class="qcard">
+        <div class="qico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+        <p>Менеджеры <b>общаются с клиентами по телефону</b> или в видеозвонках</p>
+      </div>
+      <div class="qcard">
+        <div class="qico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></div>
+        <p><b>Конверсия не растёт</b>, а прослушивать все звонки руками нереально</p>
+      </div>
+    </div>
+    <p class="qualify-foot">Хотя бы одно совпало? Значит, SoulArk окупится у вас быстрее всего</p>
+  </div>
+</section>
+
+
+<!-- ========== PLATFORM ========== -->
+<section class="sec platform" id="demo" data-screen-label="Платформа">
+  <div class="sec-inner">
+    <p class="eyebrow">Платформа SoulArk</p>
+    <h2 class="sec-title">Видите всех — растёт каждый</h2>
+    <p class="sec-sub">Глубокая аналитика звонков и инструменты для роста — в одном интерфейсе</p>
+
+    <div class="carousel" id="platform-carousel">
+      <div class="car-viewport">
+        <div class="car-track" id="car-track">
+          <div class="car-slide">
+            <img src="assets/dashboard.png" alt="Дашборд SoulArk AI" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+          </div>
+          <div class="car-slide">
+            <img src="SoulArk Screen03-2 slide2.png" alt="Скилл-карта команды" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+          </div>
+          <div class="car-slide">
+            <img src="SoulArk Screen05-2.png" alt="Разбор звонка" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+          </div>
+        </div>
+      </div>
+      <button class="car-arrow prev" id="car-prev" type="button" aria-label="Назад">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="car-arrow next" id="car-next" type="button" aria-label="Вперёд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+      <p class="car-cap" id="car-cap"><b>Дашборд руководителя.</b> Ключевые показатели команды и проблемные звонки — за 5 секунд</p>
+      <div class="car-dots" id="car-dots">
+        <button class="car-dot active" type="button" aria-label="Слайд 1"></button>
+        <button class="car-dot" type="button" aria-label="Слайд 2"></button>
+        <button class="car-dot" type="button" aria-label="Слайд 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CASE (beige) ========== -->
+<section class="sec sec-light" data-screen-label="Кейс">
+  <div class="sec-inner">
+    <p class="eyebrow">Кейс</p>
+    <h2 class="sec-title">Один звонок — и чек выше на 15%</h2>
+
+    <div class="case2">
+      <div class="case2-col was">
+        <div class="case2-tag">Было</div>
+        <p class="case2-lead">Менеджер услышал «дорого» — и сразу дал скидку.</p>
+        <div class="case2-dlg">
+          <p><b>Клиент:</b> «Цена высоковата, у конкурентов дешевле»</p>
+          <p><b>Менеджер:</b> «Можем дать скидку 15%»</p>
+          <p><b>Клиент:</b> «Я подумаю»</p>
+        </div>
+        <p class="case2-note">Сделка зависла, маржа потеряна.</p>
+      </div>
+
+      <div class="case2-arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </div>
+
+      <div class="case2-col now">
+        <div class="case2-tag now">Стало с AI-тренером</div>
+        <p class="case2-lead">AI показал: клиент сомневался не в цене, а в окупаемости. РОП вмешался.</p>
+        <div class="case2-dlg">
+          <p><b>РОП:</b> «Иван, вам важна не цена, а срок окупаемости. Покажу расчёт под ваш объём?»</p>
+          <p><b>Клиент:</b> «Да, интересно»</p>
+        </div>
+        <p class="case2-note">Закрыли <b>без скидки</b>, по исходной цене.</p>
+      </div>
+    </div>
+
+    <div class="case2-result">
+      <span class="case2-big">+15%</span>
+      <span class="case2-big-lbl">к чеку сделки — потому что AI-тренер показал истинную причину сомнений</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CONCEPT: TESTIMONIALS ========== -->
+<section class="sec tst" id="results" data-screen-label="Отзывы (концепт)">
+  <div class="sec-inner">
+    <p class="eyebrow">Что говорят клиенты</p>
+    <h2 class="sec-title">Результат виден уже в первый месяц</h2>
+
+    <div class="tst-grid">
+      <article class="tcard">
+        <div class="tstars">★★★★★</div>
+        <p class="tquote">Раньше слушал звонки выборочно и по ощущениям. Теперь вижу <span class="hi">слабое место каждого менеджера</span> за пять минут. Конверсия отдела выросла с 14% до 18% за месяц.</p>
+        <div class="twho">
+          <img src="1pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <div><div class="tname">Дмитрий Кравцов</div><div class="trole">РОП, оптовая компания · 9 менеджеров</div></div>
+        </div>
+      </article>
+
+      <article class="tcard">
+        <div class="tstars">★★★★★</div>
+        <p class="tquote">Новички выходят на план <span class="hi">в 2 раза быстрее</span> — у каждого один понятный фокус на неделю, а не методичка на 40 страниц. Это и есть масштабирование команды.</p>
+        <div class="twho">
+          <img src="2pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <div><div class="tname">Елена Морозова</div><div class="trole">Директор по продажам, IT-интегратор</div></div>
+        </div>
+      </article>
+
+      <article class="tcard">
+        <div class="tstars">★★★★★</div>
+        <p class="tquote">Окупилось с <span class="hi">первой же спасённой сделки</span>. AI поймал, что менеджер сливает на этапе ценности — поправили скрипт, средний чек вырос на 15%.</p>
+        <div class="twho">
+          <img src="3pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <div><div class="tname">Артём Соколов</div><div class="trole">Собственник, B2B-услуги</div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== CONCEPT: SECURITY (LIGHT) ========== -->
+<section class="sec sec-light" aria-label="Безопасность данных" data-screen-label="Безопасность (концепт)">
+  <div class="sec-inner">
+    <p class="eyebrow">Безопасность данных</p>
+    <h2 class="sec-title">Записи звонков под защитой</h2>
+
+    <div class="sec-grid">
+      <div>
+        <p class="sec-lead">Звонки — самые чувствительные данные отдела продаж. Мы строили платформу так, чтобы <b>служба безопасности клиента сказала «да»</b> с первого захода.</p>
+        <ul class="seclist">
+          <li>
+            <span class="ico">🔒</span>
+            <div><div class="st">Соответствие 152-ФЗ</div><div class="sd">Данные хранятся на серверах в РФ. Договор и согласия на обработку — по закону. Доступ к записям — только у вас и по ролям.</div></div>
+          </li>
+          <li>
+            <span class="ico">👤</span>
+            <div><div class="st">Гибкие права доступа</div><div class="sd">РОП видит команду, менеджер — только себя. Полный аудит действий.</div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sec-badges">
+        <div class="badge"><div class="bnum">152-ФЗ</div><div class="bl">хранение данных в РФ</div></div>
+        <div class="badge"><div class="bnum">По ролям</div><div class="bl">доступ к записям</div></div>
+        <div class="badge"><div class="bnum">SLA 99%</div><div class="bl">доступность сервиса</div></div>
+        <div class="badge"><div class="bnum">Аудит</div><div class="bl">лог всех действий</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== FOUNDERS ========== -->
+<section class="sec" style="background:#16293c" data-screen-label="Основатели">
+  <div class="sec-inner">
+    <p class="eyebrow">Команда</p>
+    <h2 class="sec-title">Основатели SoulArk AI</h2>
+    <p class="sec-sub">Уважение, развитие людей и стратегическое партнёрство</p>
+    <div class="fnd-grid">
+      <div class="fnd">
+        <image-slot id="fnd-1" shape="rounded" radius="14" placeholder="Фото"></image-slot>
+        <div>
+          <div class="fnd-name">Александр Фаресов</div>
+          <div class="fnd-role">Видение и маркетинг</div>
+          <ul>
+            <li><b>16+ лет</b> в digital-маркетинге и управлении IT-продуктами</li>
+            <li><b>30+ лет</b> практики саморазвития и soft skills</li>
+            <li><b>Создаёт продукты</b>, которые раскрывают потенциал людей</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fnd">
+        <image-slot id="fnd-2" shape="rounded" radius="14" placeholder="Фото"></image-slot>
+        <div>
+          <div class="fnd-name">Павел Артанов</div>
+          <div class="fnd-role">Клиенты и разработка</div>
+          <ul>
+            <li><b>15+ лет</b> в автоматизации и продажах сложных решений</li>
+            <li><b>15+ лет</b> управления командами разработки в B2B-интеграциях</li>
+            <li><b>Ведёт клиентов</b>, переговоры и разработку</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== PRICING (beige) ========== -->
+<section class="sec sec-light" id="pricing" data-screen-label="Тарифы">
+  <div class="sec-inner">
+    <p class="eyebrow">Тарифы</p>
+    <h2 class="sec-title">Тарифы AI-тренера</h2>
+    <p class="sec-sub">Фиксированная цена — никаких сюрпризов при росте команды</p>
+    <div class="price-grid">
+      <div class="plan">
+        <div class="plan-name">Старт</div>
+        <div class="plan-tag">Первые инсайты — с первого звонка</div>
+        <div class="plan-price">24 900 ₽</div>
+        <div class="plan-per">в месяц</div>
+        <ul>
+          <li><span class="ck">✓</span>До 4 менеджеров</li>
+          <li><span class="ck">✓</span>4 000 минут в месяц</li>
+          <li><span class="ck">✓</span>Анализ 100% звонков</li>
+          <li><span class="ck">✓</span>Скилл-карта каждого менеджера</li>
+          <li><span class="ck">✓</span>Дашборд команды</li>
+          <li><span class="ck">✓</span>1 фокус на неделю каждому</li>
+          <li><span class="ck">✓</span>7 дней тест-драйва бесплатно</li>
+        </ul>
+        <button class="plan-cta" type="button" data-open-modal>Начать тест-драйв</button>
+      </div>
+
+      <div class="plan pop">
+        <div class="plan-badge">★ Популярный</div>
+        <div class="plan-name">Про</div>
+        <div class="plan-tag">Результат виден через 2–4 недели</div>
+        <div class="plan-price">49 700 ₽</div>
+        <div class="plan-per">в месяц</div>
+        <ul>
+          <li><span class="ck">✓</span>До 10 менеджеров</li>
+          <li><span class="ck">✓</span>10 000 минут в месяц</li>
+          <li><span class="ck">✓</span>Всё из тарифа Старт</li>
+          <li><span class="ck">✓</span>AI-тренажёр звонков<span class="soon">скоро</span></li>
+          <li><span class="ck">✓</span>Сравнение с топ-менеджерами</li>
+          <li><span class="ck">✓</span>Алерты РОПу при слабых звонках</li>
+          <li><span class="ck">✓</span>7 дней тест-драйва бесплатно</li>
+        </ul>
+        <button class="plan-cta" type="button" data-open-modal>Начать тест-драйв</button>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">Премиум</div>
+        <div class="plan-tag">+15–25% к конверсии на тех же лидах</div>
+        <div class="plan-price">99 700 ₽</div>
+        <div class="plan-per">в месяц</div>
+        <ul>
+          <li><span class="ck">✓</span>До 15 менеджеров</li>
+          <li><span class="ck">✓</span>15 000 минут в месяц</li>
+          <li><span class="ck">✓</span>Всё из тарифа Про</li>
+          <li><span class="ck">✓</span>Личное ведение основателями</li>
+          <li><span class="ck">✓</span>Еженедельный Пульс команды</li>
+          <li><span class="ck">✓</span>Алерты в Telegram</li>
+          <li><span class="ck">✓</span>Настройка под ваш продукт и скрипты</li>
+        </ul>
+        <button class="plan-cta" type="button" data-open-modal>Начать тест-драйв</button>
+      </div>
+    </div>
+    <p class="price-note">Нестандартная команда или бюджет? <a href="https://t.me/SoulArkAI" target="_blank" rel="noopener">Обсудим индивидуально в Телеграм →</a></p>
+  </div>
+</section>
+
+
+<!-- ========== CONCEPT: FAQ (убран) ========== -->
+<section class="sec faq" aria-label="Частые вопросы" data-screen-label="FAQ (концепт)" hidden style="display:none">
+  <div class="sec-inner">
+    <p class="eyebrow">Частые вопросы</p>
+    <h2 class="sec-title">Коротко о важном</h2>
+
+    <div class="faq-list">
+      <details class="qa" open>
+        <summary>С какими CRM и телефонией вы интегрируетесь?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">amoCRM, Битрикс24 и большинство облачных АТС (Mango, UIS, Sipuni). Можно и вручную загружать записи. Подключаемся за один день, без доработок с вашей стороны.</p>
+      </details>
+      <details class="qa">
+        <summary>Сколько занимает внедрение?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Первые инсайты — с первого загруженного звонка. Полная настройка под ваш продукт и скрипты — 2–3 дня. Триал стартует сразу, без оплаты.</p>
+      </details>
+      <details class="qa">
+        <summary>Что будет с тарифом, если в команде больше 15 менеджеров?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Для команд от 15 человек — индивидуальный enterprise-тариф с личным ведением и настройкой под ваши процессы. Обсудим объём и цену под вашу задачу.</p>
+      </details>
+      <details class="qa">
+        <summary>«AI-тренажёр звонков» помечен «скоро» — он уже работает?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Анализ звонков, скилл-карта и фокусы недели работают сегодня. Тренажёр (отработка возражений с AI) — в бете, подключаем клиентов тарифа Про по очереди.</p>
+      </details>
+      <details class="qa">
+        <summary>Менеджеры не воспримут это как «слежку»?<span class="plus" aria-hidden="true"></span></summary>
+        <p class="ans">Платформа построена на развитии, а не на контроле: каждый видит свой прогресс и один понятный фокус роста. Команды быстро принимают инструмент, потому что он помогает зарабатывать больше.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== LEAD FORM ========== -->
+<section class="sec cta-form" id="lead" data-screen-label="Форма заявки">
+  <div class="sec-inner">
+    <div class="form-card">
+      <span class="form-eyebrow">● Бесплатно · 30 минут · онлайн</span>
+      <h2 class="sec-title">Экскурсия от основателя</h2>
+      <div class="form-host">
+        <image-slot id="founder-ava" shape="circle" placeholder="Фото"></image-slot>
+        <div>
+          <div class="host-name">Александр Фаресов</div>
+          <div class="host-role">Основатель SoulArk</div>
+        </div>
+      </div>
+      <p class="sec-sub">Основатель SoulArk Александр покажет платформу на ваших задачах и ответит на вопросы — без скриптов и продаж.</p>
+      <ul class="form-gets">
+        <li><span class="ck">✓</span><span>Разберём <b>ваш реальный кейс</b> и узкие места в звонках</span></li>
+        <li><span class="ck">✓</span><span>Покажем, как платформа <b>впишется в вашу CRM и телефонию</b></span></li>
+        <li><span class="ck">✓</span><span>Посчитаем <b>окупаемость</b> под размер вашей команды</span></li>
+      </ul>
+      <form class="lead-form" onsubmit="event.preventDefault();var ok=this.querySelector('.form-ok');ok.textContent='Спасибо! Свяжемся в течение часа и подберём удобное время.';this.reset();">
+        <input type="text" name="name" placeholder="Как вас зовут?" required />
+        <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" required />
+        <input type="text" name="company" placeholder="Компания (по желанию)" />
+        <button class="submit" type="submit">Записаться на экскурсию</button>
+        <p class="form-ok" role="status"></p>
+      </form>
+      <p class="form-reassure">Свяжемся <b>в течение часа</b><span class="sep">·</span>Без спама и навязчивых звонков</p>
+      <p class="form-consent">Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой конфиденциальности</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="foot" data-screen-label="Футер">
+  <div class="foot-inner">
+    <a class="foot-brand" href="#top"><img src="assets/logo.png" alt="SoulArk AI" /></a>
+    <div class="foot-right">
+      <nav class="foot-nav">
+        <a href="#top">Главная</a>
+        <a href="#how-works">Как работает</a>
+        <a href="#results">Результаты</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="https://demo.soulark.ru/" target="_blank" rel="noopener">Демо</a>
+      </nav>
+      <div class="foot-contacts">+7 (495) 513-13-56 · @SoulArkAI · sale@soulark.ru <span>© SoulArk AI, Москва, 2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+
+<script>
+(function () {
+  var track = document.getElementById('car-track');
+  if (!track) return;
+  var slides = track.children.length;
+  var idx = 0;
+  var prev = document.getElementById('car-prev');
+  var next = document.getElementById('car-next');
+  var dotsWrap = document.getElementById('car-dots');
+  var dots = dotsWrap ? Array.prototype.slice.call(dotsWrap.children) : [];
+  var cap = document.getElementById('car-cap');
+  var caps = [
+    '<b>Дашборд руководителя.</b> Ключевые показатели команды и проблемные звонки — за 5 секунд',
+    '<b>Скилл-карта команды.</b> Сильные и слабые зоны каждого менеджера на одном экране',
+    '<b>Разбор звонка.</b> Где ушёл клиент и что конкретно сказать в следующий раз'
+  ];
+
+  function go(n) {
+    idx = (n + slides) % slides;
+    track.style.transform = 'translateX(' + (-idx * 100) + '%)';
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    if (cap && caps[idx]) { cap.style.opacity = 0; setTimeout(function () { cap.innerHTML = caps[idx]; cap.style.opacity = 1; }, 200); }
+  }
+
+  if (prev) prev.addEventListener('click', function () { go(idx - 1); });
+  if (next) next.addEventListener('click', function () { go(idx + 1); });
+  dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); }); });
+
+  // keyboard when carousel in view
+  document.addEventListener('keydown', function (e) {
+    var c = document.getElementById('platform-carousel');
+    if (!c) return;
+    var r = c.getBoundingClientRect();
+    var visible = r.top < window.innerHeight && r.bottom > 0;
+    if (!visible) return;
+    if (e.key === 'ArrowLeft') go(idx - 1);
+    if (e.key === 'ArrowRight') go(idx + 1);
+  });
+
+  // swipe
+  var x0 = null;
+  track.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) go(idx + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+
+  go(0);
+})();
+</script>
+
+<!-- ========== LEAD MODAL ========== -->
+<div class="modal-overlay" id="lead-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal" id="lead-modal-card">
+    <button class="modal-close" id="modal-close" type="button" aria-label="Закрыть">✕</button>
+
+    <span class="modal-badge"><span class="pulse" aria-hidden="true"></span>Бесплатно · займёт 15 секунд</span>
+
+    <h2 class="modal-title" id="modal-title">Получите разбор звонка бесплатно</h2>
+    <p class="modal-sub">Оставьте контакт — покажем, <b>где реально теряются ваши сделки</b>, и как это исправить</p>
+
+    <ul class="modal-gets">
+      <li><span class="ck" aria-hidden="true">✓</span><span>Разберём <b>реальный звонок</b> вашего менеджера — без шаблонов</span></li>
+      <li><span class="ck" aria-hidden="true">✓</span><span><b>3 точки</b>, где сделка уходит, и что сказать вместо этого</span></li>
+      <li><span class="ck" aria-hidden="true">✓</span><span>Понятный <b>план роста конверсии</b> на ближайшую неделю</span></li>
+    </ul>
+
+    <form class="modal-form" id="modal-form" novalidate>
+      <div class="phone-field" id="phone-field">
+        <span class="phone-flag" aria-hidden="true"><svg viewBox="0 0 9 6" preserveAspectRatio="none"><rect width="9" height="6" fill="#fff"/><rect y="2" width="9" height="2" fill="#0039A6"/><rect y="4" width="9" height="2" fill="#D52B1E"/></svg></span>
+        <input type="tel" id="modal-phone" name="phone" inputmode="tel" placeholder="+7 (000) 000-00-00" autocomplete="tel" aria-label="Номер телефона" />
+      </div>
+      <button class="modal-submit" type="submit">Получить разбор бесплатно</button>
+    </form>
+
+    <p class="modal-reassure">Свяжемся <b>1 раз</b> в течение часа<span class="sep">·</span>Без спама и автодозвона</p>
+
+    <p class="modal-consent">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в соответствии с <a href="#">Политикой конфиденциальности</a></p>
+
+    <div class="modal-success" id="modal-success" role="status">
+      <div class="success-check" aria-hidden="true">✓</div>
+      <h3>Заявка принята!</h3>
+      <p>Свяжемся с вами в течение часа и предложим удобное время разбора. Хорошего дня 🙂</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay = document.getElementById('lead-modal');
+  var card    = document.getElementById('lead-modal-card');
+  var closeBtn = document.getElementById('modal-close');
+  var form    = document.getElementById('modal-form');
+  var field   = document.getElementById('phone-field');
+  var input   = document.getElementById('modal-phone');
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    // force reflow so transition runs
+    void overlay.offsetWidth;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    card.classList.remove('is-success');
+    setTimeout(function () { input.focus(); }, 320);
+  }
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function () {
+      overlay.hidden = true;
+      form.reset();
+      field.classList.remove('invalid');
+    }, 300);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  // phone mask: +7 (XXX) XXX-XX-XX
+  function formatPhone(v) {
+    var d = v.replace(/\D/g, '');
+    if (d[0] === '8') d = '7' + d.slice(1);
+    if (d[0] !== '7') d = '7' + d;
+    d = d.slice(0, 11);
+    var r = '+7';
+    if (d.length > 1) r += ' (' + d.slice(1, 4);
+    if (d.length >= 4) r += ') ' + d.slice(4, 7);
+    if (d.length >= 7) r += '-' + d.slice(7, 9);
+    if (d.length >= 9) r += '-' + d.slice(9, 11);
+    return r;
+  }
+  input.addEventListener('input', function () {
+    var pos = input.selectionStart === input.value.length;
+    input.value = formatPhone(input.value);
+    field.classList.remove('invalid');
+  });
+  input.addEventListener('focus', function () {
+    if (!input.value) input.value = '+7 ';
+  });
+
+  function isValid() {
+    return input.value.replace(/\D/g, '').length === 11;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!isValid()) {
+      field.classList.add('invalid');
+      input.focus();
+      return;
+    }
+    // TODO: send `input.value` to your backend / CRM here
+    card.classList.add('is-success');
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeModal();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  // open triggers: hero button + any element with [data-open-modal]
+  var heroBtn = document.getElementById('hero-cta');
+  if (heroBtn) heroBtn.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+  document.querySelectorAll('[data-open-modal]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+  });
+
+  window.openLeadModal = openModal;
+})();
+</script>
+
+<!-- ---------- TWEAKS PANEL ---------- -->
 
 </body>
 </html>
