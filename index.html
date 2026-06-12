@@ -1769,7 +1769,7 @@ function sendLead(data) {
   if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('REPLACE') !== -1) return;
   fetch(APPS_SCRIPT_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify(data)
   }).catch(function () {});
 }
