@@ -1737,7 +1737,7 @@
       input.focus();
       return;
     }
-    sendLead({ phone: input.value, source: 'modal' });
+    sendLead({ phone: input.value, source: 'review' });
     card.classList.add('is-success');
   });
 
@@ -1801,7 +1801,7 @@ function sendLead(data) {
     var name    = form.querySelector('input[name="name"]').value.trim();
     var phone   = form.querySelector('input[name="phone"]').value.trim();
     var company = form.querySelector('input[name="company"]').value.trim();
-    sendLead({ name: name, phone: phone, company: company, source: 'lead-form' });
+    sendLead({ name: name, phone: phone, company: company, source: 'tour' });
     var ok = form.querySelector('.form-ok');
     ok.textContent = 'Спасибо! Свяжемся в течение часа и подберём удобное время.';
     form.reset();
