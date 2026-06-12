@@ -20,7 +20,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="assets/hero-bg.jpg" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" /></noscript>
 
 <template id="__bundler_thumbnail">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -73,7 +75,7 @@
     background-color: #1a2a3d;
     background-image:
       linear-gradient(180deg, rgba(11,30,51,0.40) 0%, rgba(11,30,51,0.30) 45%, rgba(11,30,51,0.72) 100%),
-      url('assets/hero-bg.png');
+      url('assets/hero-bg.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -853,7 +855,7 @@
   /* ===== FORM CTA ===== */
   .cta-form {
     position: relative;
-    background-image: linear-gradient(180deg, rgba(11,30,51,0.45), rgba(11,30,51,0.62)), url('assets/hero-bg.png');
+    background-image: linear-gradient(180deg, rgba(11,30,51,0.45), rgba(11,30,51,0.62)), url('assets/hero-bg.jpg');
     background-size: cover; background-position: center;
   }
   .form-card {
@@ -1205,7 +1207,7 @@
 
       <!-- right: dashboard photo -->
       <div class="dash-wrap">
-        <img class="dash-photo" src="assets/dashboard.png" alt="Дашборд SoulArk AI: навыки команды, тренд и зоны роста" />
+        <img class="dash-photo" src="assets/dashboard.jpg" alt="Дашборд SoulArk AI: навыки команды, тренд и зоны роста" loading="lazy" width="1919" height="894" />
       </div>
     </div>
 
@@ -1277,13 +1279,13 @@
       <div class="car-viewport">
         <div class="car-track" id="car-track">
           <div class="car-slide">
-            <img src="SoulArk Screen01-2.png" alt="Дашборд руководителя SoulArk AI" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+            <img src="SoulArk Screen01-2.jpg" alt="Дашборд руководителя SoulArk AI" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;" loading="lazy">
           </div>
           <div class="car-slide">
-            <img src="SoulArk Screen03-2 slide2.png" alt="Скилл-карта команды" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+            <img src="SoulArk Screen03-2 slide2.png" alt="Скилл-карта команды" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;" loading="lazy">
           </div>
           <div class="car-slide">
-            <img src="SoulArk Screen05-2.png" alt="Разбор звонка" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+            <img src="SoulArk Screen05-2.jpg" alt="Разбор звонка" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;" loading="lazy">
           </div>
         </div>
       </div>
@@ -1356,7 +1358,7 @@
         <div class="tstars">★★★★★</div>
         <p class="tquote">Раньше слушал звонки выборочно и по ощущениям. Теперь вижу <span class="hi">слабое место каждого менеджера</span> за пять минут. Конверсия отдела выросла с 14% до 18% за месяц.</p>
         <div class="twho">
-          <img src="1pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <img src="1pic.jpg" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;" loading="lazy" width="48" height="48">
           <div><div class="tname">Дмитрий Кравцов</div><div class="trole">РОП, оптовая компания · 9 менеджеров</div></div>
         </div>
       </article>
@@ -1365,7 +1367,7 @@
         <div class="tstars">★★★★★</div>
         <p class="tquote">Новички выходят на план <span class="hi">в 2 раза быстрее</span> — у каждого один понятный фокус на неделю, а не методичка на 40 страниц. Это и есть масштабирование команды.</p>
         <div class="twho">
-          <img src="2pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <img src="2pic.jpg" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;" loading="lazy" width="48" height="48">
           <div><div class="tname">Елена Морозова</div><div class="trole">Директор по продажам, IT-интегратор</div></div>
         </div>
       </article>
@@ -1374,7 +1376,7 @@
         <div class="tstars">★★★★★</div>
         <p class="tquote">Окупилось с <span class="hi">первой же спасённой сделки</span>. AI поймал, что менеджер сливает на этапе ценности — поправили скрипт, средний чек вырос на 15%.</p>
         <div class="twho">
-          <img src="3pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <img src="3pic.jpg" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;" loading="lazy" width="48" height="48">
           <div><div class="tname">Артём Соколов</div><div class="trole">Собственник, B2B-услуги</div></div>
         </div>
       </article>
@@ -1423,7 +1425,7 @@
     <p class="sec-sub">Уважение, развитие людей и стратегическое партнёрство</p>
     <div class="fnd-grid">
       <div class="fnd">
-        <img src="alexander1.jpg" alt="Александр" style="width:200px;height:250px;object-fit:cover;border-radius:14px;display:block;">
+        <img src="alexander1.jpg" alt="Александр" style="width:200px;height:250px;object-fit:cover;border-radius:14px;display:block;" loading="lazy" width="200" height="250">
         <div>
           <div class="fnd-name">Александр Фаресов</div>
           <div class="fnd-role">Видение и маркетинг</div>
@@ -1435,7 +1437,7 @@
         </div>
       </div>
       <div class="fnd">
-        <img src="photo_2022-10-07_16-.jpg" alt="Основатель" style="width:200px;height:250px;object-fit:cover;border-radius:14px;display:block;">
+        <img src="photo_2022-10-07_16-.jpg" alt="Основатель" style="width:200px;height:250px;object-fit:cover;border-radius:14px;display:block;" loading="lazy" width="200" height="250">
         <div>
           <div class="fnd-name">Павел Артанов</div>
           <div class="fnd-role">Клиенты и разработка</div>
@@ -1553,7 +1555,7 @@
       <span class="form-eyebrow">● Бесплатно · 30 минут · онлайн</span>
       <h2 class="sec-title">Экскурсия от основателя</h2>
       <div class="form-host">
-        <img src="alexander1.jpg" alt="Александр" style="width:56px;height:56px;object-fit:cover;border-radius:50%;flex-shrink:0;display:block;">
+        <img src="alexander1.jpg" alt="Александр" style="width:56px;height:56px;object-fit:cover;border-radius:50%;flex-shrink:0;display:block;" loading="lazy" width="56" height="56">
         <div>
           <div class="host-name">Александр Фаресов</div>
           <div class="host-role">Основатель SoulArk</div>
