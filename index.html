@@ -3,11 +3,27 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SoulArk AI — AI-тренер для отдела продаж</title>
+<title>SoulArk — AI-тренер для отдела продаж</title>
+<meta name="description" content="SoulArk — AI-тренер для отдела продаж. Анализирует каждый звонок, даёт персональную обратную связь менеджерам и увеличивает конверсию на 18%. Попробуйте бесплатно." />
+<meta name="keywords" content="AI-тренер, AI тренер для продаж, AI-тренер отдела продаж, анализ звонков, обучение менеджеров, SoulArk" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://soulark.ru/" />
+<meta property="og:title" content="SoulArk — AI-тренер для отдела продаж" />
+<meta property="og:description" content="Анализирует каждый звонок, даёт персональную обратную связь менеджерам и увеличивает конверсию на 18%." />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:site_name" content="SoulArk" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="SoulArk — AI-тренер для отдела продаж" />
+<meta name="twitter:description" content="Анализирует каждый звонок, даёт персональную обратную связь менеджерам и увеличивает конверсию на 18%." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="assets/hero-bg.jpg" />
+<link rel="preload" as="font" href="fonts/Gilroy-ExtraBold.woff" type="font/woff" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" /></noscript>
 
 <template id="__bundler_thumbnail">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -58,13 +74,24 @@
     width: 100%;
     min-height: 880px;
     background-color: #1a2a3d;
-    background-image:
-      linear-gradient(180deg, rgba(11,30,51,0.40) 0%, rgba(11,30,51,0.30) 45%, rgba(11,30,51,0.72) 100%),
-      url('assets/hero-bg.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
     overflow: hidden;
+  }
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11,30,51,0.40) 0%, rgba(11,30,51,0.30) 45%, rgba(11,30,51,0.72) 100%);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .hero::after {
@@ -840,7 +867,7 @@
   /* ===== FORM CTA ===== */
   .cta-form {
     position: relative;
-    background-image: linear-gradient(180deg, rgba(11,30,51,0.45), rgba(11,30,51,0.62)), url('assets/hero-bg.png');
+    background-image: linear-gradient(180deg, rgba(11,30,51,0.45), rgba(11,30,51,0.62)), url('assets/hero-bg.jpg');
     background-size: cover; background-position: center;
   }
   .form-card {
@@ -1079,10 +1106,11 @@
 
 <!-- HERO -->
 <section class="hero" id="top" data-screen-label="01 Hero">
+  <img class="hero-bg-img" src="assets/hero-bg.jpg" alt="" fetchpriority="high" decoding="async" width="1920" height="1080">
   <div class="hero-inner">
     <header class="header">
       <a class="brand" href="#top" aria-label="SoulArk AI">
-        <img src="assets/logo.png" alt="SoulArk AI" />
+        <img src="assets/logo.png" alt="SoulArk AI" width="211" height="63" />
       </a>
       <nav class="nav" aria-label="Главное меню">
         <a href="#how-works">Как работает</a>
@@ -1127,12 +1155,12 @@
   <div class="sec-inner">
     <p class="trust-lead">За плечами команды — <b>100+ закрытых B2B-сделок</b> в автоматизации</p>
     <div class="logos">
-      <div class="logo-chip"><img src="assets/logos/alexrovich.png" alt="Alexrovich" /></div>
-      <div class="logo-chip"><img src="assets/logos/pfk.png" alt="1 ПФК" /></div>
-      <div class="logo-chip"><img src="assets/logos/pek.png" alt="ПЭК" /></div>
-      <div class="logo-chip"><img src="assets/logos/lifepay.png" alt="Life Pay" /></div>
-      <div class="logo-chip"><img src="assets/logos/melitek.png" alt="Мелитэк" /></div>
-      <div class="logo-chip"><img src="assets/logos/trasko.png" alt="Trasko" /></div>
+      <div class="logo-chip"><img src="assets/logos/alexrovich.png" alt="Alexrovich" width="129" height="33" loading="lazy" /></div>
+      <div class="logo-chip"><img src="assets/logos/pfk.png" alt="1 ПФК" width="116" height="32" loading="lazy" /></div>
+      <div class="logo-chip"><img src="assets/logos/pek.png" alt="ПЭК" width="99" height="32" loading="lazy" /></div>
+      <div class="logo-chip"><img src="assets/logos/lifepay.png" alt="Life Pay" width="125" height="38" loading="lazy" /></div>
+      <div class="logo-chip"><img src="assets/logos/melitek.png" alt="Мелитэк" width="116" height="32" loading="lazy" /></div>
+      <div class="logo-chip"><img src="assets/logos/trasko.png" alt="Trasko" width="152" height="33" loading="lazy" /></div>
     </div>
   </div>
 </section>
@@ -1192,7 +1220,7 @@
 
       <!-- right: dashboard photo -->
       <div class="dash-wrap">
-        <img class="dash-photo" src="assets/dashboard.png" alt="Дашборд SoulArk AI: навыки команды, тренд и зоны роста" />
+        <img class="dash-photo" src="assets/dashboard.jpg" alt="Дашборд SoulArk AI: навыки команды, тренд и зоны роста" loading="lazy" width="1268" height="590" />
       </div>
     </div>
 
@@ -1206,7 +1234,7 @@
     <p class="eyebrow">Что такое SoulArk</p>
     <h2 class="sec-title">Как AI-тренер превращает звонки в прибыль</h2>
     <p class="define">
-      SoulArk — это <b>AI-тренер для отдела продаж</b>. Он слушает звонки ваших менеджеров и подсказывает каждому, что улучшить — <span class="hl">как живой наставник</span>, только для всей команды и каждый день.
+      SoulArk — это <b>AI-тренер для отдела продаж</b>. Он слушает звонки ваших менеджеров и подсказывает каждому, что улучшить — <span class="hl">персонально каждому</span>, для всей команды и каждый день.
     </p>
     <div class="steps-grid">
       <div class="step">
@@ -1264,13 +1292,13 @@
       <div class="car-viewport">
         <div class="car-track" id="car-track">
           <div class="car-slide">
-            <img src="assets/dashboard.png" alt="Дашборд SoulArk AI" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+            <img src="SoulArk Screen01-2.jpg" alt="Дашборд руководителя SoulArk AI" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;" loading="lazy">
           </div>
           <div class="car-slide">
-            <img src="SoulArk Screen03-2 slide2.png" alt="Скилл-карта команды" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+            <img src="SoulArk Screen03-2 slide2.png" alt="Скилл-карта команды" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;" loading="lazy">
           </div>
           <div class="car-slide">
-            <img src="SoulArk Screen05-2.png" alt="Разбор звонка" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;">
+            <img src="SoulArk Screen05-2.jpg" alt="Разбор звонка" style="width:100%;height:100%;object-fit:contain;border-radius:0;display:block;" loading="lazy">
           </div>
         </div>
       </div>
@@ -1343,7 +1371,7 @@
         <div class="tstars">★★★★★</div>
         <p class="tquote">Раньше слушал звонки выборочно и по ощущениям. Теперь вижу <span class="hi">слабое место каждого менеджера</span> за пять минут. Конверсия отдела выросла с 14% до 18% за месяц.</p>
         <div class="twho">
-          <img src="1pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <img src="1pic.jpg" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;" loading="lazy" width="48" height="48">
           <div><div class="tname">Дмитрий Кравцов</div><div class="trole">РОП, оптовая компания · 9 менеджеров</div></div>
         </div>
       </article>
@@ -1352,7 +1380,7 @@
         <div class="tstars">★★★★★</div>
         <p class="tquote">Новички выходят на план <span class="hi">в 2 раза быстрее</span> — у каждого один понятный фокус на неделю, а не методичка на 40 страниц. Это и есть масштабирование команды.</p>
         <div class="twho">
-          <img src="2pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <img src="2pic.jpg" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;" loading="lazy" width="48" height="48">
           <div><div class="tname">Елена Морозова</div><div class="trole">Директор по продажам, IT-интегратор</div></div>
         </div>
       </article>
@@ -1361,7 +1389,7 @@
         <div class="tstars">★★★★★</div>
         <p class="tquote">Окупилось с <span class="hi">первой же спасённой сделки</span>. AI поймал, что менеджер сливает на этапе ценности — поправили скрипт, средний чек вырос на 15%.</p>
         <div class="twho">
-          <img src="3pic.png" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;">
+          <img src="3pic.jpg" class="tava-slot" alt="Фото" style="border-radius:50%;object-fit:cover;width:48px;height:48px;" loading="lazy" width="48" height="48">
           <div><div class="tname">Артём Соколов</div><div class="trole">Собственник, B2B-услуги</div></div>
         </div>
       </article>
@@ -1410,7 +1438,7 @@
     <p class="sec-sub">Уважение, развитие людей и стратегическое партнёрство</p>
     <div class="fnd-grid">
       <div class="fnd">
-        <image-slot id="fnd-1" shape="rounded" radius="14" placeholder="Фото"></image-slot>
+        <img src="alexander1.jpg" alt="Александр" style="width:200px;height:250px;object-fit:cover;border-radius:14px;display:block;" loading="lazy" width="200" height="250">
         <div>
           <div class="fnd-name">Александр Фаресов</div>
           <div class="fnd-role">Видение и маркетинг</div>
@@ -1422,7 +1450,7 @@
         </div>
       </div>
       <div class="fnd">
-        <image-slot id="fnd-2" shape="rounded" radius="14" placeholder="Фото"></image-slot>
+        <img src="photo_2022-10-07_16-.jpg" alt="Основатель" style="width:200px;height:250px;object-fit:cover;border-radius:14px;display:block;" loading="lazy" width="200" height="250">
         <div>
           <div class="fnd-name">Павел Артанов</div>
           <div class="fnd-role">Клиенты и разработка</div>
@@ -1540,7 +1568,7 @@
       <span class="form-eyebrow">● Бесплатно · 30 минут · онлайн</span>
       <h2 class="sec-title">Экскурсия от основателя</h2>
       <div class="form-host">
-        <image-slot id="founder-ava" shape="circle" placeholder="Фото"></image-slot>
+        <img src="alexander1.jpg" alt="Александр" style="width:56px;height:56px;object-fit:cover;border-radius:50%;flex-shrink:0;display:block;" loading="lazy" width="56" height="56">
         <div>
           <div class="host-name">Александр Фаресов</div>
           <div class="host-role">Основатель SoulArk</div>
@@ -1552,7 +1580,7 @@
         <li><span class="ck">✓</span><span>Покажем, как платформа <b>впишется в вашу CRM и телефонию</b></span></li>
         <li><span class="ck">✓</span><span>Посчитаем <b>окупаемость</b> под размер вашей команды</span></li>
       </ul>
-      <form class="lead-form" onsubmit="event.preventDefault();var ok=this.querySelector('.form-ok');ok.textContent='Спасибо! Свяжемся в течение часа и подберём удобное время.';this.reset();">
+      <form class="lead-form" id="lead-form">
         <input type="text" name="name" placeholder="Как вас зовут?" required />
         <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" required />
         <input type="text" name="company" placeholder="Компания (по желанию)" />
@@ -1568,7 +1596,7 @@
 <!-- ========== FOOTER ========== -->
 <footer class="foot" data-screen-label="Футер">
   <div class="foot-inner">
-    <a class="foot-brand" href="#top"><img src="assets/logo.png" alt="SoulArk AI" /></a>
+    <a class="foot-brand" href="#top"><img src="assets/logo.png" alt="SoulArk AI" width="211" height="64" loading="lazy" /></a>
     <div class="foot-right">
       <nav class="foot-nav">
         <a href="#top">Главная</a>
@@ -1582,7 +1610,6 @@
   </div>
 </footer>
 
-<script src="image-slot.js"></script>
 
 <script>
 (function () {
@@ -1737,7 +1764,7 @@
       input.focus();
       return;
     }
-    // TODO: send `input.value` to your backend / CRM here
+    sendLead({ phone: input.value, source: 'review' });
     card.classList.add('is-success');
   });
 
@@ -1760,7 +1787,54 @@
 })();
 </script>
 
-<!-- ---------- TWEAKS PANEL ---------- -->
+<!-- ---------- TELEGRAM LEADS ---------- -->
+<script>
+// После деплоя Apps Script замени URL ниже на свой
+var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWGpe4pbk3VDI8gA4DKT7A1t93pxkdTwsUgvVGfQeGIRDwJohL-xX1HxtTBTtrX7DI/exec';
+
+function sendLead(data) {
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('REPLACE') !== -1) return;
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(data)
+  }).catch(function () {});
+}
+
+(function () {
+  var form = document.getElementById('lead-form');
+  if (!form) return;
+
+  var phoneInput = form.querySelector('input[name="phone"]');
+  if (phoneInput) {
+    function fmt(v) {
+      var d = v.replace(/\D/g, '');
+      if (d.charAt(0) === '8') d = '7' + d.slice(1);
+      if (d.charAt(0) !== '7') d = '7' + d;
+      d = d.slice(0, 11);
+      var r = '+7';
+      if (d.length > 1) r += ' ' + d.slice(1, 4);
+      if (d.length > 4) r += ' ' + d.slice(4, 7);
+      if (d.length > 7) r += '-' + d.slice(7, 9);
+      if (d.length > 9) r += '-' + d.slice(9, 11);
+      return r;
+    }
+    phoneInput.addEventListener('input', function () { phoneInput.value = fmt(phoneInput.value); });
+    phoneInput.addEventListener('focus', function () { if (!phoneInput.value) phoneInput.value = '+7 '; });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name    = form.querySelector('input[name="name"]').value.trim();
+    var phone   = form.querySelector('input[name="phone"]').value.trim();
+    var company = form.querySelector('input[name="company"]').value.trim();
+    sendLead({ name: name, phone: phone, company: company, source: 'tour' });
+    var ok = form.querySelector('.form-ok');
+    ok.textContent = 'Спасибо! Свяжемся в течение часа и подберём удобное время.';
+    form.reset();
+  });
+})();
+</script>
 
 </body>
 </html>
