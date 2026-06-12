@@ -164,7 +164,7 @@
     align-items: center;
     gap: 12px;
     color: #fff;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 400;
     letter-spacing: 0.005em;
     white-space: nowrap;
@@ -871,12 +871,18 @@
     background-size: cover; background-position: center;
   }
   .form-card {
-    max-width: 640px; margin: 0 auto;
+    max-width: 980px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start;
     background: rgba(10,22,38,0.55);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 24px; padding: 48px 52px;
     box-shadow: 0 40px 100px rgba(0,0,0,0.45);
+  }
+  .form-left { display: flex; flex-direction: column; }
+  .form-right { display: flex; flex-direction: column; justify-content: center; }
+  @media (max-width: 700px) {
+    .form-card { grid-template-columns: 1fr; gap: 32px 0; padding: 36px 24px; }
   }
   .form-eyebrow {
     display: inline-flex; align-items: center; gap: 9px; margin: 0 0 18px;
@@ -1077,7 +1083,7 @@
   @media (max-width: 1200px) {
     .hero-inner { padding: 24px 40px 60px; }
     .nav { gap: 28px; margin-left: 12px; }
-    .phone { font-size: 18px; }
+    .phone { font-size: 21px; }
     .hero-title { font-size: 44px; }
   }
   @media (max-width: 900px) {
@@ -1110,7 +1116,7 @@
   <div class="hero-inner">
     <header class="header">
       <a class="brand" href="#top" aria-label="SoulArk AI">
-        <img src="assets/logo.png" alt="SoulArk AI" width="211" height="63" />
+        <img src="assets/SoulArk3.01.png" alt="SoulArk AI" width="200" height="53" />
       </a>
       <nav class="nav" aria-label="Главное меню">
         <a href="#how-works">Как работает</a>
@@ -1565,30 +1571,34 @@
 <section class="sec cta-form" id="lead" data-screen-label="Форма заявки">
   <div class="sec-inner">
     <div class="form-card">
-      <span class="form-eyebrow">● Бесплатно · 30 минут · онлайн</span>
-      <h2 class="sec-title">Экскурсия от основателя</h2>
-      <div class="form-host">
-        <img src="alexander1.jpg" alt="Александр" style="width:56px;height:56px;object-fit:cover;border-radius:50%;flex-shrink:0;display:block;" loading="lazy" width="56" height="56">
-        <div>
-          <div class="host-name">Александр Фаресов</div>
-          <div class="host-role">Основатель SoulArk</div>
+      <div class="form-left">
+        <span class="form-eyebrow">● Бесплатно · 30 минут · онлайн</span>
+        <h2 class="sec-title">Экскурсия от основателя</h2>
+        <div class="form-host">
+          <img src="alexander1.jpg" alt="Александр" style="width:56px;height:56px;object-fit:cover;border-radius:50%;flex-shrink:0;display:block;" loading="lazy" width="56" height="56">
+          <div>
+            <div class="host-name">Александр Фаресов</div>
+            <div class="host-role">Основатель SoulArk</div>
+          </div>
         </div>
+        <p class="sec-sub">Основатель SoulArk Александр покажет платформу на ваших задачах и ответит на вопросы — без скриптов и продаж.</p>
+        <ul class="form-gets">
+          <li><span class="ck">✓</span><span>Разберём <b>ваш реальный кейс</b> и узкие места в звонках</span></li>
+          <li><span class="ck">✓</span><span>Покажем, как платформа <b>впишется в вашу CRM и телефонию</b></span></li>
+          <li><span class="ck">✓</span><span>Посчитаем <b>окупаемость</b> под размер вашей команды</span></li>
+        </ul>
       </div>
-      <p class="sec-sub">Основатель SoulArk Александр покажет платформу на ваших задачах и ответит на вопросы — без скриптов и продаж.</p>
-      <ul class="form-gets">
-        <li><span class="ck">✓</span><span>Разберём <b>ваш реальный кейс</b> и узкие места в звонках</span></li>
-        <li><span class="ck">✓</span><span>Покажем, как платформа <b>впишется в вашу CRM и телефонию</b></span></li>
-        <li><span class="ck">✓</span><span>Посчитаем <b>окупаемость</b> под размер вашей команды</span></li>
-      </ul>
-      <form class="lead-form" id="lead-form">
-        <input type="text" name="name" placeholder="Как вас зовут?" required />
-        <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" required />
-        <input type="text" name="company" placeholder="Компания (по желанию)" />
-        <button class="submit" type="submit">Записаться на экскурсию</button>
-        <p class="form-ok" role="status"></p>
-      </form>
-      <p class="form-reassure">Свяжемся <b>в течение часа</b><span class="sep">·</span>Без спама и навязчивых звонков</p>
-      <p class="form-consent">Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой конфиденциальности</a></p>
+      <div class="form-right">
+        <form class="lead-form" id="lead-form">
+          <input type="text" name="name" placeholder="Как вас зовут?" required />
+          <input type="tel" name="phone" placeholder="+7 (000) 000-00-00" required />
+          <input type="text" name="company" placeholder="Компания (по желанию)" />
+          <button class="submit" type="submit">Записаться на экскурсию</button>
+          <p class="form-ok" role="status"></p>
+        </form>
+        <p class="form-reassure">Свяжемся <b>в течение часа</b><span class="sep">·</span>Без спама и навязчивых звонков</p>
+        <p class="form-consent">Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой конфиденциальности</a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -1596,7 +1606,7 @@
 <!-- ========== FOOTER ========== -->
 <footer class="foot" data-screen-label="Футер">
   <div class="foot-inner">
-    <a class="foot-brand" href="#top"><img src="assets/logo.png" alt="SoulArk AI" width="211" height="64" loading="lazy" /></a>
+    <a class="foot-brand" href="#top"><img src="assets/SoulArk3.01.png" alt="SoulArk AI" width="200" height="53" loading="lazy" /></a>
     <div class="foot-right">
       <nav class="foot-nav">
         <a href="#top">Главная</a>
