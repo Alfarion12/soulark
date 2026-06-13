@@ -164,7 +164,7 @@
     align-items: center;
     gap: 12px;
     color: #fff;
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 400;
     letter-spacing: 0.005em;
     white-space: nowrap;
@@ -878,6 +878,7 @@
     border-radius: 24px; padding: 48px 52px;
     box-shadow: 0 40px 100px rgba(0,0,0,0.45);
   }
+  .form-card .sec-title { font-size: 28px; }
   .form-eyebrow {
     display: inline-flex; align-items: center; gap: 9px; margin: 0 0 18px;
     padding: 8px 18px; border-radius: 999px; white-space: nowrap;
@@ -1077,20 +1078,87 @@
   @media (max-width: 1200px) {
     .hero-inner { padding: 24px 40px 60px; }
     .nav { gap: 28px; margin-left: 12px; }
-    .phone { font-size: 18px; }
+    .phone { font-size: 21px; }
     .hero-title { font-size: 44px; }
   }
+
+  /* ===== HAMBURGER ===== */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    background: none; border: 2px solid rgba(255,255,255,0.22); border-radius: 10px;
+    cursor: pointer; padding: 10px 12px; flex-shrink: 0; margin-left: auto;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   @media (max-width: 900px) {
-    .hero { min-height: 720px; }
+    .hero { min-height: 680px; }
     .hero-inner { padding: 20px 24px 60px; }
-    .header { flex-wrap: wrap; gap: 16px; }
-    .nav { order: 3; width: 100%; justify-content: flex-start; gap: 18px; flex-wrap: wrap; margin-left: 0; }
-    .hero-content { margin-top: 80px; }
+    .header { flex-wrap: nowrap; gap: 12px; }
+    .nav, .phone { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { margin-top: 64px; }
     .hero-title { font-size: 32px; }
     .hero-subtitle { font-size: 17px; }
     .hero-meta { font-size: 15px; }
     .hero-cta { padding: 20px 40px; font-size: 16px; width: 100%; max-width: 420px; }
-    .brand img { height: 44px; }
+    .brand img { height: 40px; }
+  }
+  @media (max-width: 480px) {
+    .hero { min-height: 520px; }
+    .hero-title { font-size: 26px; line-height: 1.2; }
+    .hero-content { margin-top: 40px; }
+    .hero-subtitle { font-size: 15px; }
+  }
+
+  /* ===== MOBILE MENU ===== */
+  .mob-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 199;
+    opacity: 0; pointer-events: none; transition: opacity .3s ease;
+  }
+  .mob-overlay.open { opacity: 1; pointer-events: auto; }
+  .mob-menu {
+    position: fixed; top: 0; right: 0; width: min(320px, 88vw); height: 100%;
+    background: #0B1E33; border-left: 1px solid rgba(255,255,255,0.1);
+    z-index: 200; display: flex; flex-direction: column; padding: 28px 28px 40px;
+    transform: translateX(100%);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
+    box-shadow: -12px 0 48px rgba(0,0,0,0.55);
+    overflow-y: auto;
+  }
+  .mob-menu.open { transform: translateX(0); }
+  .mob-head {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px;
+  }
+  .mob-head img { height: 34px; width: auto; }
+  .mob-close {
+    background: none; border: none; color: rgba(255,255,255,0.7); cursor: pointer;
+    padding: 6px; display: flex; align-items: center; justify-content: center;
+    border-radius: 8px; transition: color .2s, background .2s;
+  }
+  .mob-close:hover { color: #fff; background: rgba(255,255,255,0.1); }
+  .mob-link {
+    display: block; color: #fff; font-size: 19px; font-weight: 500;
+    padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: color .2s ease;
+  }
+  .mob-link:hover { color: var(--orange); }
+  .mob-tg {
+    margin-top: 8px; color: var(--orange) !important; font-weight: 700;
+    border-bottom: none; padding: 18px 28px;
+    background: rgba(255,140,66,0.12); border: 1px solid rgba(255,140,66,0.35);
+    border-radius: 12px; text-align: center;
+  }
+  .mob-tg:hover { background: rgba(255,140,66,0.2) !important; color: var(--orange) !important; }
+  .mob-phone {
+    margin-top: auto; padding-top: 32px;
+    display: flex; align-items: center; gap: 12px;
+    color: #fff; font-size: 19px; font-weight: 400; white-space: nowrap;
   }
 </style>
 </head>
@@ -1110,7 +1178,7 @@
   <div class="hero-inner">
     <header class="header">
       <a class="brand" href="#top" aria-label="SoulArk AI">
-        <img src="assets/logo.png" alt="SoulArk AI" width="211" height="63" />
+        <img src="assets/SoulArk3.01.png" alt="SoulArk AI" width="200" height="53" />
       </a>
       <nav class="nav" aria-label="Главное меню">
         <a href="#how-works">Как работает</a>
@@ -1122,6 +1190,9 @@
         <span class="dot" aria-hidden="true"></span>
         +7 495 513-13-56
       </a>
+      <button class="hamburger" id="hamburger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </header>
 
     <div class="hero-content">
@@ -1234,7 +1305,7 @@
     <p class="eyebrow">Что такое SoulArk</p>
     <h2 class="sec-title">Как AI-тренер превращает звонки в прибыль</h2>
     <p class="define">
-      SoulArk — это <b>AI-тренер для отдела продаж</b>. Он слушает звонки ваших менеджеров и подсказывает каждому, что улучшить — <span class="hl">персонально каждому</span>, для всей команды и каждый день.
+      SoulArk — это <b>AI-тренер для отдела продаж</b>. Он слушает звонки ваших менеджеров и подсказывает что улучшить — <span class="hl">персонально каждому</span>, для всей команды и каждый день.
     </p>
     <div class="steps-grid">
       <div class="step">
@@ -1308,7 +1379,7 @@
       <button class="car-arrow next" id="car-next" type="button" aria-label="Вперёд">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
-      <p class="car-cap" id="car-cap"><b>Дашборд руководителя.</b> Ключевые показатели команды и проблемные звонки — за 5 секунд</p>
+      <p class="car-cap" id="car-cap"><b>Дашборд руководителя.</b> Ключевые показатели команды и звонки — за 5 секунд</p>
       <div class="car-dots" id="car-dots">
         <button class="car-dot active" type="button" aria-label="Слайд 1"></button>
         <button class="car-dot" type="button" aria-label="Слайд 2"></button>
@@ -1525,7 +1596,7 @@
         <button class="plan-cta" type="button" data-open-modal>Начать тест-драйв</button>
       </div>
     </div>
-    <p class="price-note">Нестандартная команда или бюджет? <a href="https://t.me/SoulArkAI" target="_blank" rel="noopener">Обсудим индивидуально в Телеграм →</a></p>
+    <p class="price-note">Нестандартная команда или бюджет? <a href="https://t.me/SoulArkAI" target="_blank" rel="noopener">Обсудим индивидуально →</a></p>
   </div>
 </section>
 
@@ -1574,7 +1645,7 @@
           <div class="host-role">Основатель SoulArk</div>
         </div>
       </div>
-      <p class="sec-sub">Основатель SoulArk Александр покажет платформу на ваших задачах и ответит на вопросы — без скриптов и продаж.</p>
+      <p class="sec-sub">Александр покажет платформу на Ваших задачах и ответит на вопросы — без обязательств.</p>
       <ul class="form-gets">
         <li><span class="ck">✓</span><span>Разберём <b>ваш реальный кейс</b> и узкие места в звонках</span></li>
         <li><span class="ck">✓</span><span>Покажем, как платформа <b>впишется в вашу CRM и телефонию</b></span></li>
@@ -1587,7 +1658,7 @@
         <button class="submit" type="submit">Записаться на экскурсию</button>
         <p class="form-ok" role="status"></p>
       </form>
-      <p class="form-reassure">Свяжемся <b>в течение часа</b><span class="sep">·</span>Без спама и навязчивых звонков</p>
+      <p class="form-reassure">Свяжемся <b>в течение часа</b><span class="sep">·</span>Без спама</p>
       <p class="form-consent">Нажимая кнопку, вы даёте согласие на обработку персональных данных в соответствии с <a href="#">Политикой конфиденциальности</a></p>
     </div>
   </div>
@@ -1596,7 +1667,7 @@
 <!-- ========== FOOTER ========== -->
 <footer class="foot" data-screen-label="Футер">
   <div class="foot-inner">
-    <a class="foot-brand" href="#top"><img src="assets/logo.png" alt="SoulArk AI" width="211" height="64" loading="lazy" /></a>
+    <a class="foot-brand" href="#top"><img src="assets/SoulArk3.01.png" alt="SoulArk AI" width="200" height="53" loading="lazy" /></a>
     <div class="foot-right">
       <nav class="foot-nav">
         <a href="#top">Главная</a>
@@ -1610,6 +1681,25 @@
   </div>
 </footer>
 
+<!-- ===== MOBILE MENU ===== -->
+<div class="mob-overlay" id="mob-overlay"></div>
+<nav class="mob-menu" id="mob-menu" aria-hidden="true" aria-label="Мобильное меню">
+  <div class="mob-head">
+    <img src="assets/SoulArk3.01.png" alt="SoulArk" width="136" height="36">
+    <button class="mob-close" id="mob-close" aria-label="Закрыть меню">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <a href="#how-works" class="mob-link">Как работает</a>
+  <a href="#results" class="mob-link">Результаты</a>
+  <a href="#pricing" class="mob-link">Тарифы</a>
+  <a href="https://demo.soulark.ru/" target="_blank" rel="noopener" class="mob-link">ДЕМО</a>
+  <a href="https://t.me/SoulArkAI" target="_blank" rel="noopener" class="mob-link mob-tg">Чат в Телеграм</a>
+  <a class="mob-phone" href="tel:+74955131356">
+    <span class="dot" aria-hidden="true"></span>
+    +7 495 513-13-56
+  </a>
+</nav>
 
 <script>
 (function () {
@@ -1784,6 +1874,46 @@
   });
 
   window.openLeadModal = openModal;
+})();
+</script>
+
+<!-- ---------- HAMBURGER MENU ---------- -->
+<script>
+(function () {
+  var btn     = document.getElementById('hamburger');
+  var menu    = document.getElementById('mob-menu');
+  var overlay = document.getElementById('mob-overlay');
+  var closeBtn = document.getElementById('mob-close');
+  if (!btn || !menu) return;
+
+  function openMenu() {
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', function () {
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  // закрывать при клике на якорную ссылку
+  menu.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
 })();
 </script>
 
